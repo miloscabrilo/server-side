@@ -1,0 +1,18 @@
+service: my-serverless-app
+
+provider:
+  name: serverless
+  runtime: nodejs
+
+functions:
+  app:
+    handler: server.handler
+    events:
+      - http:
+          path: /send-email
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
